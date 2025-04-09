@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row mt-5">
+    <div class="card my-4">
+        <div class="card-body">
+            <form action="{% url 'user_register_action' %}" method="POST">
+                <legend class="text-center" style="color:brown"><u>User Register Form</u></legend>
+                {% csrf_token %}
+                <legend class="text-center" style="color:brown"><u></u>{{form.as_p}}</u></legend>
+
+                
+                <p>
+                    <center>
+                        <input type="submit" class="btn btn-primary" value="Register">
+                    </center
+                    
+                    {% comment %} <input type="reset" class="btn btn-secondary"> {% endcomment %}
+                </p>
+            </form>
+
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}" style="color: brown;" {% endif %}>{{ message }}</li>
+                    {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+
+    </div>
+</div>
+{% endblock %}

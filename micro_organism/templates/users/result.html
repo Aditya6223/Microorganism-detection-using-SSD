@@ -1,0 +1,38 @@
+{% extends 'users/user_base.html' %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Micro Organism Classification</title>
+</head>
+<body>
+    <h2>Upload an Image for Classification</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="image" required>
+        <button type="submit">Predict</button>
+    </form>
+    {% if image_base64 %}
+        <h3>Prediction: {{ prediction }}</h3>
+        <img src="data:image/jpeg;base64,{{ image_base64 }}" alt="Predicted Image">
+    {% endif %}
+</body>
+</html>
+
+
+{% comment %} <head>
+    <title>Detection Result</title>
+</head>
+<body>
+    <center>
+    <h2>Detection Result</h2>
+    <img src="{{ image_url }}" alt="Detected Image">
+    <h2>The detected microorganism is <span style="color: green;">{{label}}</span></h2>
+
+    <br><br>
+    <a href="{% url 'upload_image' %}">Upload Another Image</a>
+</center>
+</body> {% endcomment %}
+{% endblock %}

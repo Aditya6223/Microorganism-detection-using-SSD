@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block admin %} active {% endblock %}
+
+{% block content %}
+<div class="row mt-5">
+    <div class="card my-4">
+        <div class="card-body">
+            <form action="{% url 'doctor_login_check' %}" method="POST">
+                <legend class="text-center" style="color: brown;"><u>Doctor Login</u></legend>
+                {% csrf_token %}
+
+                <p>
+                    <label for="id_loginid" style="color: brown;">Loginid:</label> <input type="text" name="loginid" pattern="[a-zA-Z]+"
+                        class="form-control" maxlength="100" required id="id_loginid">
+                </p>
+
+                <p>
+                    <label for="id_password" style="color: brown;">Password:</label>
+                    <input type="password" name="password" class="form-control" maxlength="100" required
+                        id="id_password">
+                </p>
+
+                <p>
+                    <center>
+                        <input type="submit" class="btn btn-primary" value="Login">
+                    </center>
+                    {% comment %} <input type="reset" class="btn btn-secondary"> {% endcomment %}
+                </p>
+            </form>
+
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}" {% endif %} style='color:brown;'>{{ message }}</li>
+                    {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,3 @@
+use test_images for testing the output..............
+
+note : if you test imges from google it may not predict accurately due to filters applied to the images

@@ -1,0 +1,41 @@
+{% extends 'admins/admin_base.html' %}
+{% block user_list %} active {% endblock %}
+{% block content %}
+<h2>Users List</h2>
+    <table class="table" style="color:white;">
+        <thead>
+            <tr>
+                <th scope="col">Sno</th>
+                <th scope="col">Name</th>
+                <th scope="col">LoginId</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Email</th>
+                <th scope="col">Status</th>
+                <th scope="col">Activate</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in data %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ user.name}}</td>
+                <td>{{ user.loginid}}</td>
+
+                <td>{{ user.mobile}}</td>
+                <td>{{ user.email}}</td>
+                <td>{{ user.status}}</td>
+
+
+                {% if user.status == 'waiting' %}
+                <td>
+                    <a href="/AdminActivaUsers/?uid={{ user.id }}">Activate</a>
+                </td>
+                {% else %}
+                <td> Activated</td>
+                {% endif %}
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block home %} active {% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col m-5 pt-5">
+        <h1 class="h2">
+            <!-- Drug Recommandation System Based
+            on Sentiment Analysis of Drug Reviews Using Machine Learning. -->
+        </h1>
+        <button class="btn btn-primary mt-2">
+            <a href="{% url 'register' %}" class="text-white" style=" text-decoration: none;">Register</a>
+        </button>
+    </div>
+
+    <div class="col m-2">
+        <div class="border">
+            <img src="{% static 'img/image.png' %}" class="rounded" alt="" width="100%">
+        </div>
+    </div>
+
+</div>
+{% endblock %}
